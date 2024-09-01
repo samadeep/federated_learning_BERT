@@ -1,0 +1,29 @@
+digraph G {
+
+  // Graph Styling
+  rankdir=LR; // Left-to-Right layout
+  node [shape=box, style=filled, fillcolor=lightblue, fontname="Arial"]; // Node style
+  edge [fontname="Arial"]; // Edge font
+
+  subgraph cluster_server {
+    label = "Server-Side Operations";
+    labeljust = "c"; // Center the subgraph label
+    style = filled;
+    fillcolor = lightyellow; // Subgraph background color
+
+    B [label="Receive\nClient Updates\n(results)"];
+    C [label="Cluster Clients\n(Hamming Distance)"];
+    D [label="Select Top\nModels\n(Accuracy)"];
+    E [label="Aggregate\nWeights\n(Averaging)"];
+    F [label="Save\nAggregated\nWeights"];
+
+    B -> C -> D -> E -> F;
+  }
+
+  A [label="Start", shape=Mdiamond]; // Start node shape
+  G [label="End", shape=Msquare]; // End node shape
+
+  A -> B;
+  F -> G;
+
+}
