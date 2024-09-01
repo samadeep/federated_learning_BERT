@@ -34,15 +34,44 @@
 **Federated Learning Workflow (Dot Diagram)**
 
 ```dot
-graph LR
-A[Clients (Simulated)] --> |Train on Local Data| B(Local Models)
-B --> |Aggregate Updates (Custom Strategy)| C(Global Model)
-C --> |Update Clients| A
-subgraph Custom Aggregation Strategy
-    A1(Weighted Averaging)
-    A2(Median Aggregation)
-    A3(Robust Aggregation)
-end
+
+digraph G {
+    
+    // Nodes
+    A [label="Clients (Simulated)"];
+    B [label="Local Models"];
+    C [label="Global Model"];
+    A1 [label="Weighted Averaging"];
+    A2 [label="Median Aggregation"];
+    A3 [label="Robust Aggregation"];
+    A4 [label="Differential Privacy"];
+    A5 [label="Secure Aggregation"];
+    A6 [label="Homomorphic Encryption"];
+    A7 [label="Efficient Communication"];
+    A8 [label="Asynchronous Updates"];
+
+    // Edges
+    A -> B [label="Train on Local Data"];
+    B -> C [label="Aggregate Updates"];
+    C -> A [label="Update Clients"];
+
+    // Subgraphs
+    subgraph cluster_0 {
+        label = "Custom Aggregation Strategy";
+        A1; A2; A3;
+    }
+
+    subgraph cluster_1 {
+        label = "Data Privacy and Security";
+        A4; A5; A6;
+    }
+
+    subgraph cluster_2 {
+        label = "Communication and Efficiency";
+        A7; A8;
+    }
+
+}
 ```
 
 ### Running the Project
